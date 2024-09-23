@@ -1,19 +1,17 @@
 package main
 
-import "time"
+import "fmt"
 
 func main() {
-	ticker := time.NewTicker(50 * time.Millisecond)
-	defer ticker.Stop()
-	for i := 0; i < 4; i++ {
-		<-ticker.C
-		hoge()
-		println("tick")
+	type firstPearson struct {
+		name string
+		age  int
 	}
-}
-
-func hoge() {
-	ticker := time.NewTicker(1000 * time.Millisecond)
-	<-ticker.C
-	println("hoge")
+	f := firstPearson{name: "John", age: 25}
+	var g struct {
+		name string
+		age  int
+	}
+	g = f
+	fmt.Println(f == g)
 }
